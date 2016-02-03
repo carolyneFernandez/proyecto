@@ -1,0 +1,154 @@
+create database TIENDA;
+
+*** tabla distribuidor*******
+CREATE TABLE `TIENDA`.`distribuidor` (
+  `cod-distribuidor` INT(6) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(35) NOT NULL,
+  `localidad` VARCHAR(45) NOT NULL,
+  `provincia` VARCHAR(45) NOT NULL,
+  `cif` VARCHAR(9) NOT NULL,
+  `logotipo` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`cod-distribuidor`));
+
+
+
+******tabla producto**********
+CREATE TABLE `TIENDA`.`producto` (
+  `cod-producto` INT(6) NOT NULL AUTO_INCREMENT,
+  `cod-distribuidor` INT(6) NOT NULL,
+  `nombre` VARCHAR(25) NOT NULL,
+  `descripcion` VARCHAR(45) NOT NULL,
+  `talla` VARCHAR(8) NOT NULL,
+  `color` VARCHAR(20) NOT NULL,
+  `productocol` INT(6) NOT NULL,
+  `stock` INT(6) NOT NULL,
+  `foto` VARCHAR(200) NOT NULL,
+  `categoria` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`cod-producto`),
+  INDEX `fk_producto_1_idx` (`cod-distribuidor` ASC),
+  CONSTRAINT `fk_producto_1`
+    FOREIGN KEY (`cod-distribuidor`)
+    REFERENCES `TIENDA`.`distribuidor` (`cod-distribuidor`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+*****tabla usuarios********
+
+CREATE TABLE `TIENDA`.`usuarios` (
+  `cod-usuario` INT(6) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(20) NOT NULL,
+  `apellido` VARCHAR(30) NOT NULL,
+  `dni` VARCHAR(9) NOT NULL,
+  `localidad` VARCHAR(45) NOT NULL,
+  `provincia` VARCHAR(30) NOT NULL,
+  `pais` VARCHAR(30) NOT NULL,
+  `administrador` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`cod-usuario`));
+
+
+
+******tabla pedidos*****
+
+CREATE TABLE `TIENDA`.`pedidos` (
+  `cod-pedido` INT(6) NOT NULL AUTO_INCREMENT,
+  `direccion` VARCHAR(45) NOT NULL,
+  `localidad` VARCHAR(45) NOT NULL,
+  `provincia` VARCHAR(30) NOT NULL,
+  `pais` VARCHAR(30) NOT NULL,
+  `fecha-emision` DATE NOT NULL,
+  `cod-usuario` INT(6) NOT NULL,
+  PRIMARY KEY (`cod-pedido`),
+  INDEX `fk_pedidos_1_idx` (`cod-usuario` ASC),
+  CONSTRAINT `fk_pedidos_1`
+    FOREIGN KEY (`cod-usuario`)
+    REFERENCES `TIENDA`.`usuarios` (`cod-usuario`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+
+********tabla incluyen********
+
+CREATE TABLE `TIENDA`.`incluyen` (
+  `cod-producto` INT(6) NOT NULL,
+  `cod-pedido` INT(6) NOT NULL,
+  `incluyencol` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod-producto`, `cod-pedido`),
+  INDEX `fk_incluyen_1_idx` (`cod-pedido` ASC),
+  CONSTRAINT `fk_incluyen_1`
+    FOREIGN KEY (`cod-pedido`)
+    REFERENCES `TIENDA`.`pedidos` (`cod-pedido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_incluyen_2`
+    FOREIGN KEY (`cod-producto`)
+    REFERENCES `TIENDA`.`producto` (`cod-producto`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+*************INSERT EN LA TABLA USUARIOS*************************
+
+INSERT INTO `TIENDA`.`usuarios` (`cod-usuario`, `nombre`, `apellido`, `dni`, `localidad`, `provincia`, `pais`, `administrador`, `direccion`, `passwd`) VALUES ('100', 'carolyne', 'fernandez prada', '20503311F', 'los rosales', 'sevilla', 'españa', '0', 'jr. ancash 1634 nº3', MD5('carolyne'))
+
+
+
+INSERT INTO `TIENDA`.`usuarios` (`cod-usuario`, `nombre`, `apellido`, `dni`, `localidad`, `provincia`, `pais`, `administrador`, `direccion`, `passwd`) VALUES ('101', 'rosario', 'lopez huarcaya', '20501515P', 'sevilla', 'sevilla', 'españa', '1', 'carlos III nº18', MD5('rosario'));
+
+
+INSERT INTO `TIENDA`.`usuarios` (`cod-usuario`, `nombre`, `apellido`, `dni`, `localidad`, `provincia`, `pais`, `administrador`, `direccion`, `passwd`) VALUES ('102', 'rafael', 'ruiz rodrigez', '20503777G', 'tocina', 'sevilla', 'españa', '1', 'virgen de lujan nº14', MD5('rafael'));
+
+*************INSERT EN LA TABLA PEDIDOS*************************
+
+INSERT INTO `TIENDA`.`pedidos` (`cod-pedido`, `direccion`, `localidad`, `provincia`, `pais`, `fecha-emision`, `cod-usuario`) VALUES ('200', 'carlos III nº18', 'sevilla', 'sevilla', 'españa', '2014-12-31', '100');
+
+
+INSERT INTO `TIENDA`.`pedidos` (`cod-pedido`, `direccion`, `localidad`, `provincia`, `pais`, `fecha-emision`, `cod-usuario`) VALUES ('202', 'virgen de lujan nº14', 'tocina', 'sevilla', 'españa', '2016-01-07', '102');
+
+
+INSERT INTO `TIENDA`.`pedidos` (`cod-pedido`, `direccion`, `localidad`, `provincia`, `pais`, `fecha-emision`, `cod-usuario`) VALUES ('201', 'carlos III nº18', 'sevilla', 'sevilla', 'españa', '2015-10-25', '101');
+
+*************INSERT EN LA TABLA DISTRIBUIDOR*************************
+INSERT INTO `TIENDA`.`distribuidor` (`cod-distribuidor`, `nombre`, `localidad`, `provincia`, `cif`, `logotipo`) VALUES ('503', 'exe', 'madrid', 'madrid', '444444444', '/logotipo/exe.png');
+
+
+INSERT INTO `TIENDA`.`distribuidor` (`cod-distribuidor`, `nombre`, `localidad`, `provincia`, `cif`, `logotipo`) VALUES ('500', 'puma', 'sevilla', 'sevilla', '111111111', '/logotipo/puma.png');
+
+INSERT INTO `TIENDA`.`distribuidor` (`cod-distribuidor`, `nombre`, `localidad`, `provincia`, `cif`, `logotipo`) VALUES ('501', 'carolina boix', 'madrid', 'madrid', '222222222', '/logotipo/carolina.png');
+
+
+INSERT INTO `TIENDA`.`distribuidor` (`cod-distribuidor`, `nombre`, `localidad`, `provincia`, `cif`, `logotipo`) VALUES ('503', 'exe', 'barcelona', 'barcelona', '333333333', '/logotipo/adidas.png');
+
+
+*********** INSERT EN LA TABLA PRODUCTO*************
+INSERT INTO `TIENDA`.`producto` (`cod-producto`, `cod-distribuidor`, `nombre`, `descripcion`, `talla`, `color`, `stock`, `foto`, `categoria`) VALUES ('400', '500', 'Sudadera con capucha Trefoil Logo', 'El clásico estilo deportivo se actualiza con un moderno estampado floral. Esta cómoda sudadera para mujer luce un estampado muy femenino y una capucha con detalle cruzado en el cuello. Presenta un gran trébol engomado en el pecho. ', 'L', 'multicolor', '20', '/imagenes/mujer/ropa/sudadera.jpg', 'sudaderas');
+
+
+INSERT INTO `TIENDA`.`producto` (`cod-producto`, `cod-distribuidor`, `nombre`, `descripcion`, `talla`, `color`, `stock`, `foto`, `categoria`) VALUES ('401', '501', 'CHAQUETA CON CAPUCHA DYNAMIC', 'Esta chaqueta con capucha Dynamic te da comodidad y estilo, ya sea que la uses para ponerte cómodo o para relajarte. Es el abrigo que elegirás una y otra vez, ya que está confeccionado con tecnología de regulación de la temperatura para mantenerte abrigado. Y tu novia la usará una y otra vez. Disfrútala mientras pueda  ', 'M', 'NEGRO', '15', '/imagenes/hombre/ropa/chaqueta1.jpg', 'chaquetas');
+
+
+
+INSERT INTO `TIENDA`.`producto` (`cod-producto`, `cod-distribuidor`, `nombre`, `descripcion`, `talla`, `color`, `stock`, `foto`, `categoria`) VALUES ('402', '501', 'CHAQUETA CON CAPUCHA ARSENAL CREST FAN ', ' ¿Te molesta la escarcha de los últimos días de otoño? ¿Sientes frío mientras alientas desde la tribuna? Solución fácil: esta cómoda chaqueta con capucha de Arsenal, con su práctica capucha ajustable y la insignia del Arsenal Club. Póntela y continúa alentando.
+
+Características
+
+70% algodón, 30% felpa francesa de poliéster
+Capucha con cordón para un calce regulable
+Bolsillo tipo canguro ', 's', 'gris', '10', '/imagenes/hombre/ropa/chaqueta2.jpg', 'chaquetas');
+
+
+
+INSERT INTO `TIENDA`.`producto` (`cod-producto`, `cod-distribuidor`, `nombre`, `descripcion`, `talla`, `color`, `stock`, `foto`, `categoria`) VALUES ('403', '503', 'Botas altas pitón', 'botas altas ,define las silueta de piernas dando una altura que nose ve,un taconn numero12', '38', 'multicolor', '30', '/imagenes/mujer/zapatos/botas.jpg', 'botas');
+
+
+
+*********INSER EN LA TABLA incluyen***********
+
+INSERT INTO `TIENDA`.`incluyen` (`cod-producto`, `cod-pedido`, `cantidad`) VALUES ('400', '200', '2');
+
+INSERT INTO `TIENDA`.`incluyen` (`cod-producto`, `cod-pedido`, `cantidad`) VALUES ('400', '201', '5');
+
+INSERT INTO `TIENDA`.`incluyen` (`cod-producto`, `cod-pedido`, `cantidad`) VALUES ('402', '201', '3');
+
+INSERT INTO `TIENDA`.`incluyen` (`cod-producto`, `cod-pedido`, `cantidad`) VALUES ('403', '202', '20');
+
