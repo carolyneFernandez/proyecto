@@ -38,7 +38,7 @@
     $obj = $result->fetch_object();
     echo "<form method='post' action='#'>";
     echo " <label>Nombre :</label>";
-    echo  "<input type='text' name='nombre'  value='$obj->nombre' class='form-control'>";
+    echo  "<input type='text' name='nombre'  value='$obj->Nombre' class='form-control'>";
     echo "<input type='hidden'name='id' value='$obj->codusuario'> ";
     echo " <label>Apellido:</label>";
     echo "<input type='text' name='apellido'  value='$obj->apellido' class='form-control'>";

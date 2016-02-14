@@ -1,17 +1,15 @@
-html{
-  margin: 0px;
-  padding: 0px;
+body{
+  background-image: url("../imagenes/fondo.jpg")
 }
-.loginbox{
-  border-radius: 4px;
-  box-shadow: 0px 2px 10px;
-  margin: 100px auto;
-  padding: 5%;
-  width: 320px;
+#formulario{
+  background-color:grey;
 
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
+  width: 40%;
+  height: 90%;
+  border-style: groove; border-width: 20px;
+
+  padding: 1%;
 }
-input[type="sumbit"]{
-  margin-top: 14px;
+input{
+margin-top: 4%;
 }

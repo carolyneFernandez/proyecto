@@ -30,7 +30,7 @@
 
 
         unset($connection);
-        header("Location:producto.php?id=$id");
+        header("Location:producto.php");
 
 
 

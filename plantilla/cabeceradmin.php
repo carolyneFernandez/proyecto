@@ -2,9 +2,12 @@
   <a href="#" class="navbar-brand" >MODA CAROLYNE</a>
 <div class="collapse navbar-collapse" id="navegacion">
 <ul class="nav navbar-nav">
-  <li class="active"><a href="administrador.php">USUARIOS</a></li>
+  <li><a href="administrador.php">USUARIOS</a></li>
   <li><a href="producto.php">PRODUCTOS</a></li>
   <li><a href="pedidos.php">PEDIDOS</a></li>
+  <li><a href="distribuidor.php">DISTRIBUIDOR</a></li>
+  <li><a href="cyt.php">COLORES Y TALLAS</a></li>
+    <li><a href="../usuarios/index.php">PAGINA PRINCIPAL</a></li>
 </ul>
 <?PHP
 
@@ -22,7 +25,7 @@ if(isset($_SESSION['nombre']) && $_SESSION['nombre'] != ''){
               <li>
                 <div class='collapse navbar-collapse'>
                   <ul class='nav navbar-nav'>
-                    <li><a href='perfil.php'><span class='glyphicon glyphicon-user'></span>
+                    <li><a href='../usuarios/perfil.php'><span class='glyphicon glyphicon-user'></span>
                       Ver perfil
                     </a>
                     </li>

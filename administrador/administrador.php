@@ -65,14 +65,13 @@
               //PRINTING EACH ROW
               echo "<tr>";
               echo "<td>".$obj->codusuario."</td>";
-              echo "<td>".$obj->nombre."</td>";
+              echo "<td>".$obj->Nombre."</td>";
               echo "<td>".$obj->apellido."</td>";
               echo "<td>".$obj->dni."</td>";
               echo "<td>".$obj->localidad."</td>";
               echo "<td>".$obj->provincia."</td>";
               echo "<td>".$obj->pais."</td>";
               echo "<td>".$obj->administrador."</td>";
-
               echo "<td>".$obj->direccion."</td>";
               echo "<td><center><a href='editar-usu.php?id=$obj->codusuario'><img src='../admin/1.png'></center></td>";
               echo "<td><center><a href='eliminar-usu.php?id=$obj->codusuario'><img src='../admin/eliminar.jpg'></center></td>";
@@ -90,7 +89,3 @@
     </div>
   </body>
   </html>
-
-
-  </body>
-</html>

@@ -18,7 +18,7 @@
     <?php
         include "../plantilla/cabeceradmin.php"
     ?>
-  <body>
+
     <?php
 
       //CREATING THE CONNECTION
@@ -33,20 +33,20 @@
       //MAKING A SELECT QUERY
       /* Consultas de selección que devuelven un conjunto de resultados */
       $connection->set_charset("utf8");
-      if ($result = $connection->query("SELECT * FROM producto")) {
+      if ($result = $connection->query("SELECT p.*,d.nombre nombred FROM  producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor")) {
 
 
 
       ?>
 <div class="container">
 
-
+  <a href="añadirproducto.php"><button type='button' class='btn btn-info'>Añadir Producto</button></a>
           <!-- PRINT THE TABLE AND THE HEADER -->
           <table style="border:1px solid black" class="table table-striped table-bordered table-hover table-condensed">
           <thead>
             <tr class="info" >
               <th>Codigo del Producto</th>
-              <th>Codigo el Distribuidor</th>
+              <th>Nombre del  Distribuidor</th>
               <th>Nombre del Producto</th>
               <th>Descripcion</th>
               <th>Stock</th>
@@ -56,6 +56,7 @@
               <th>Sexo</th>
               <th>Editar</th>
               <th>Eliminar</th>
+              <th> Ver Detalles</th>
 
 
           </thead>
@@ -68,7 +69,7 @@
               //PRINTING EACH ROW
               echo "<tr>";
               echo "<td>".$obj->codproducto."</td>";
-              echo "<td>".$obj->coddistribuidor."</td>";
+              echo "<td>".$obj->nombred."</td>";
               echo "<td>".$obj->nombre."</td>";
               echo "<td>".$obj->descripcion."</td>";
               echo "<td>".$obj->stock."</td>";
@@ -78,10 +79,12 @@
               echo "<td>".$obj->sexo."</td>";
               echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
               echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
+              echo "<td><center><a href='?deta=$obj->codproducto'><button type='button' class='btn btn-info'>Detalles</button></center></td>";
+
               echo "</tr>";
 
           }
-
+echo "</table>";
           //Free the result. Avoid High Memory Usages
           $result->close();
           unset($obj);
@@ -91,7 +94,12 @@
 
     ?>
     </div>
-    <a href="añadirproducto.php"><button type='button' class='btn btn-info'>Añadir Producto</button></a>
+
+    <!--DETALLES-->
+
+
+
+
   </body>
   </html>
 
