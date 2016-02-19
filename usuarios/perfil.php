@@ -153,7 +153,7 @@ unset($connection);
 	<?php
 
 		//CREATING THE CONNECTION
-		$connection = new mysqli("localhost", "root", "carolyne", "tienda");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 
 		//TESTING IF THE CONNECTION WAS RIGHT
 		if ($connection->connect_errno) {
