@@ -168,7 +168,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 		$consulta1=("SELECT * FROM producto pro join incluyen i on pro.codproducto=i.codproducto
 	   join pedidos p on i.codpedido=p.codpedido
 	   join usuarios  u on  p.codusuario=u.codusuario
-	   where u.Nombre='".$_SESSION['nombre']."' ");
+	   where u.Nombre='".$_SESSION['nombre']."' "  or $_SESSION["administrador"]!="1");
 	if ($result1 = $connection->query($consulta1)) {
 
 		?>
