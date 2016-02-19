@@ -58,9 +58,7 @@ while($obj = $result->fetch_object()) {
       <b>$obj->nombre</b>
       </center></p>";
     echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
-
-
-      echo "<button type='button' class='btn btn-info'>Añadir Carrito</button></center>";
+      echo "<button type='button' class='btn btn-info'>Ver detalles</button></center>";
       echo "</div>";
     }
 

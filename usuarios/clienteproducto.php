@@ -18,6 +18,7 @@ if ($connection->connect_errno) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/chaquetamujer.css">
+    <link rel="stylesheet" href="../css/colores.css">
       <link rel="stylesheet" href="../css/foot.css">
         <link rel="stylesheet" href="../css/clienteproducto.css">
     </head>
@@ -71,26 +72,26 @@ echo "<div id='cuerpo'>";
           while($objcolores = $resultcolores->fetch_object()){
             $color= $objcolores->nombrecolor;
             switch ($color) {
-              case 'Negro':
-                echo "<div id='negro'></div>";
-                break;
-                case 'Rojo':
-                  echo "<div id='rojo'></div>";
-                  break;
-                  case 'Gris':
-                    echo "<div id='grey'></div>";
-                    break;
-                    case 'Marron':
-                      echo "<div id='marron'></div>";
-                      break;
-                      case 'Blanco':
-                        echo "<div id='blanco'></div>";
-                        break;
-                        case 'Verde':
-                          echo "<div id='verde'></div>";
-                          break;
-              default:
-                # code...
+            case 'Negro':
+              echo "<div id='negro'></div>";
+            break;
+            case 'Rojo':
+              echo "<div id='rojo'></div>";
+            break;
+            case 'Gris':
+              echo "<div id='grey'></div>";
+            break;
+            case 'Marron':
+              echo "<div id='marron'></div>";
+            break;
+            case 'Blanco':
+              echo "<div id='blanco'></div>";
+            break;
+            case 'Verde':
+              echo "<div id='verde'></div>";
+            break;
+            default:
+              echo "No hay colores";
                 break;
             }
 

@@ -34,7 +34,6 @@
         if ($result = $connection->query("SELECT * FROM producto ")) {
 
           ?>
-          <td><a href='añadircyt.php'><button type='button' class='btn btn-info'>Añade Color y Talla</button></a></td>
     <div class="container">
 
 
@@ -44,7 +43,6 @@
                 <tr class="info" >
                   <th>Nombre del Producto</th>
                   <th>Ver detalle</th>
-
 
               </thead>
 
@@ -57,6 +55,7 @@
                   echo "<tr>";
                   echo "<td>".$obj->nombre."</td>";
                   echo "<td><center><a href='detallecolor.php?deta=$obj->codproducto'><button type='button' class='info'>Ver Detalles</button></center></td>";
+
                   echo "</tr>";
               }
 

@@ -64,6 +64,7 @@
                 echo "<td>$obj2->nombre</td>";
                 echo "<td>$obj2->nombretalla</td>";
                 echo "<td>$obj2->nombrecolor</td>";
+
               echo "</tr>";
             }
             ?>
@@ -81,46 +82,95 @@
         <div class="nav nav-tabs well well-sm" style="text-aling:center;">
 
       <?php
-      $consulta2="SELECT DISTINCt nombretalla FROM tallas  t join tallasproducto tp  on
-  tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto join colorproducto cp on p.codproducto=cp.codproducto join
-        colores c on c.idcolor=cp.idcolor where p.codproducto=$deta order by nombre;";
+      $consulta1="SELECT DISTINCT nombretalla ,p.codproducto,tp.tallas FROM tallas  t join tallasproducto tp  on
+  tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto where p.codproducto=$deta order by nombre";
 
-   $result2=$connection->query($consulta2);
+   $result1=$connection->query($consulta1);
    echo "<div class='cuerpo'>";
-   echo "<center><form name='myform'  method='POST'>";
+   echo "<center><form name='myform' action='eliminar-talla.php'  method='POST'>";
    echo "<fieldset>";
    echo "<legend>ELIMINAR TALLAS</legend>";
-        while ($obj2=$result2->fetch_object()) {
+   $obj1=$result1->fetch_object();
+   echo "<input type='hidden' name='producto' value='$obj1->codproducto'>";
+
+    while ($obj1=$result1->fetch_object()) {
     echo "<label class='radi'>";
-    echo  "<a href='eliminar-talla.php?talla=$obj2->tallas'>
-    <input type='radio' value='$obj2->idtallas'>$obj2->nombretalla</a><br>";
-  echo "</label>";
+    echo  "<input id='ta' type='checkbox' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
+    echo "</label>";
     }
     echo "  </fieldset>";
+    echo "<center><button type='submit' class='btn btn-danger'>ELIMINAR</button></center>";
     echo "  </form></center>";
-    echo "<center><button type='button' class='btn btn-danger'>ELIMINAR</button></center>";
-     echo "</div>";?>
+   echo "</div>";?>
 
      <?php
-     $consulta2="SELECT DISTINCt nombrecolor FROM tallas  t join tallasproducto tp  on
-   tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto join colorproducto cp on p.codproducto=cp.codproducto join
-       colores c on c.idcolor=cp.idcolor where p.codproducto=$deta order by nombre;";
+     $consulta3="SELECT DISTINCt nombrecolor,p.codproducto,cp.idcolor FROM  producto p join colorproducto cp on p.codproducto=cp.codproducto join
+       colores c on c.idcolor=cp.idcolor where p.codproducto=$deta order by nombre";
 
-   $result2=$connection->query($consulta2);
+   $result3=$connection->query($consulta3);
    echo "<div class='cuerpo'>";
-   echo "<center><form name='myform'  method='POST'>";
+  echo "<center><form name='myform1' action='eliminacolor.php'  method='POST'>";
    echo "<fieldset>";
    echo "<legend>ELIMINAR COLOR</legend>";
-       while ($obj2=$result2->fetch_object()) {
+   $obj3=$result3->fetch_object();
+   echo "<input type='hidden' name='producto' value='$obj3->codproducto'>";
+       while ($obj3=$result3->fetch_object()) {
    echo "<label class='radi' >";
-   echo  "<input  type='radio'  value='$obj2->idcolor'>$obj2->nombrecolor<br>";
+   echo  "<input id=color type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
+
    echo "</label>";
 
    }
+
    echo "  </fieldset>";
+   echo "<center><button type='submit' class='btn btn-danger'>ELIMINAR</button></center>";
+
    echo "  </form><center>";
-  echo "<center><button type='button' class='btn btn-danger'>ELIMINAR</button></center>";
-    echo "</div>";?>
+    echo "</div>";
+  ?>
+
+  <?php
+  $consulta1="SELECT * FROM tallas";
+
+$result1=$connection->query($consulta1);
+echo "<div class='cuerpo'>";
+echo "<center><form name='myform' action='agregartalla.php'  method='POST'>";
+echo "<fieldset>";
+echo "<legend>AGREGAR TALLAS</legend>";
+while ($obj1=$result1->fetch_object()) {
+echo "<label class='radi'>";
+echo  "<input id='talla' type='checkbox' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
+echo "</label>";
+}
+echo "  </fieldset>";
+echo "<center><button type='submit' class='btn btn-success'>AGREGAR</button></center>";
+echo "  </form></center>";
+echo "</div>";?>
+
+<?php
+$consulta3="SELECT * FROM colores ";
+
+$result3=$connection->query($consulta3);
+echo "<div class='cuerpo'>";
+echo "<center><form name='myform1' action='eliminacolor.php'  method='POST'>";
+echo "<fieldset>";
+echo "<legend>AGREGAR COLOR</legend>";
+$obj3=$result3->fetch_object();
+echo "<input type='hidden' name='producto' value='$obj3->codproducto'>";
+  while ($obj3=$result3->fetch_object()) {
+echo "<label class='radi' >";
+echo  "<input  id='color' type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
+
+echo "</label>";
+
+}
+
+echo "  </fieldset>";
+echo "<center><button type='submit' class='btn btn-success'>AGREGAR</button></center>";
+
+echo "  </form><center>";
+echo "</div>";
+?>
     </div>
   </div>
 
