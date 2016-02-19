@@ -90,7 +90,3 @@ u.codusuario=p.codusuario join incluyen i on p.codpedido=i.codpedido join produc
 
   </body>
   </html>
-
-
-  </body>
-</html>
