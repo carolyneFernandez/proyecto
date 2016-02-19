@@ -27,7 +27,7 @@
             <li class="divider"></li>
              <li><a href="sudadera-mujer.php">Sudadera</a> </li>
               <li class="divider"></li>
-              <li><a href="vaquero.mujer.php">Vaqueros</a> </li>
+              <li><a href="pantalon-mujer.php">Vaqueros</a> </li>
               <li class="divider"></li>
               <li><a href="blusa-mujer.php">Blusas</a> </li>
           </ul>
