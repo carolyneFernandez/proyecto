@@ -28,8 +28,7 @@ if ($connection->connect_errno) {
 ?>
 
 <?php
-
-$connection = new mysqli("localhost","root","carolyne","tienda");
+$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($connection->connect_errno) {
     printf("Connection failed: %s\n", $connection->connect_error);
     header('location: index.php');

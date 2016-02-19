@@ -23,7 +23,7 @@ session_start();
 
 
        //AHORA DEBEMOS REALIZAR UNA CONEXIÓN A LA BASE DE DATOS
-       $connection = new mysqli("localhost","root","carolyne","tienda");
+         $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
        $resultado = $connection->query($consulta);
 
 
