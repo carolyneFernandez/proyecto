@@ -42,7 +42,7 @@ if ($connection->connect_errno) {
 
 }
 $connection->set_charset("utf8");
-$consulta=("SELECT * from producto where  categoria='pantalones' and sexo='mujer';");
+$consulta=("SELECT * from producto where  categoria='blusas' and sexo='mujer';");
 
 	$result = $connection->query($consulta);
   if (isset($result) && $result->num_rows==0) {
