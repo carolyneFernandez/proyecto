@@ -1,4 +1,7 @@
 <?php
+  include_once("../plantilla/db_configuration.php");
+?>
+<?php
 session_start();
 ob_start();
 if(isset($_SESSION["nombre"])){
@@ -18,7 +21,7 @@ if(isset($_SESSION["nombre"])){
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  
+
 </head>
 
 <body>
@@ -27,7 +30,7 @@ if(isset($_SESSION["nombre"])){
 
    <?php
 
-   $connection = new mysqli("localhost","root","carolyne","tienda");
+  $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
    if($connection->connect_errno){
        printf("ERROR AL INTENTAR CONECTARSE A LA BASE DE DATOS",$connection->connect_errno);
        exit();

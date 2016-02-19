@@ -1,3 +1,6 @@
+<?php
+  include_once("../plantilla/db_configuration.php");
+?>
 <html>
 <head><title>Registrate</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -58,7 +61,7 @@
 $pais=$_POST['pais'];
     $direccion=$_POST['direccion'];
 
-      $connection = new mysqli("localhost","root","carolyne","tienda");
+      $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
       if($connection->connect_errno)
       {
           printf("ERROR AL INTENTAR CONECTARSE A LA BASE DE DATOS",$connection->connect_errno);

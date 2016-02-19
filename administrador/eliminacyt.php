@@ -1,4 +1,7 @@
 <?php
+  include_once("../plantilla/db_configuration.php");
+?>
+<?php
     include "../plantilla/sesionadmin.php"
 ?>
 <!DOCTYPE html>
@@ -16,7 +19,7 @@
 
    <?php
 
-    $connection = new mysqli("localhost","root","carolyne","tienda");
+     $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 
       if ($connection->connect_errno) {
           printf("ERROR AL ESTABLECER CONTACTO CON LA BASE DE DATOS", $connection->connect_errno);
