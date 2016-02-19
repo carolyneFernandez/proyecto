@@ -1,4 +1,7 @@
 <?php
+  include_once("../plantilla/db_configuration.php");
+?>
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
