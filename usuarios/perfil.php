@@ -142,7 +142,7 @@ session_start();
 $result->close();
 unset($obj);
 unset($connection);
-}
+}if($_SESSION["administrador"]=="1"){
 ?>
 <div class="container well">
 	<div class="row">
@@ -153,7 +153,7 @@ unset($connection);
 	<?php
 
 		//CREATING THE CONNECTION
-$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
+	     $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 
 		//TESTING IF THE CONNECTION WAS RIGHT
 		if ($connection->connect_errno) {
@@ -168,7 +168,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 		$consulta1=("SELECT * FROM producto pro join incluyen i on pro.codproducto=i.codproducto
 	   join pedidos p on i.codpedido=p.codpedido
 	   join usuarios  u on  p.codusuario=u.codusuario
-	   where u.Nombre='".$_SESSION['nombre']."' "  or $_SESSION["administrador"]!="1");
+	   where u.Nombre='".$_SESSION['nombre']."' ");
 	if ($result1 = $connection->query($consulta1)) {
 
 		?>
@@ -199,9 +199,9 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 					}
 
 					//Free the result. Avoid High Memory Usages
-
-$result->close();
-unset($obj);
+}
+$result1->close();
+unset($obj1);
 unset($connection);
 }
 ?>
