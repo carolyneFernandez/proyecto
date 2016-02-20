@@ -37,7 +37,7 @@
         $connection->set_charset("utf8");
 
 
-        $consulta2="SELECT * FROM tallas  t join tallasproducto tp  on
+        $consulta2="SELECT  DISTINCT nombretalla ,p.codproducto,nombre,nombrecolor FROM tallas  t join tallasproducto tp  on
   tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto join colorproducto cp on p.codproducto=cp.codproducto join
           colores c on c.idcolor=cp.idcolor where p.codproducto=$deta order by nombre;";
 
@@ -131,50 +131,7 @@
    echo "  </form><center>";
     echo "</div>";
   ?>
-
-  <?php
-  $consulta1="SELECT * FROM tallas";
-
-$result1=$connection->query($consulta1);
-echo "<div class='cuerpo'>";
-echo "<center><form name='myform' action='agregartalla.php'  method='POST'>";
-echo "<fieldset>";
-echo "<legend>AGREGAR TALLAS</legend>";
-while ($obj1=$result1->fetch_object()) {
-echo "<label class='radi'>";
-echo  "<input id='talla' type='checkbox' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
-echo "</label>";
-}
-echo "  </fieldset>";
-echo "<center><button type='submit' class='btn btn-success'>AGREGAR</button></center>";
-echo "  </form></center>";
-echo "</div>";?>
-
-<?php
-$consulta3="SELECT * FROM colores ";
-
-$result3=$connection->query($consulta3);
-echo "<div class='cuerpo'>";
-echo "<center><form name='myform1' action='eliminacolor.php'  method='POST'>";
-echo "<fieldset>";
-echo "<legend>AGREGAR COLOR</legend>";
-$obj3=$result3->fetch_object();
-echo "<input type='hidden' name='producto' value='$obj3->codproducto'>";
-  while ($obj3=$result3->fetch_object()) {
-echo "<label class='radi' >";
-echo  "<input  id='color' type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
-
-echo "</label>";
-
-}
-
-echo "  </fieldset>";
-echo "<center><button type='submit' class='btn btn-success'>AGREGAR</button></center>";
-
-echo "  </form><center>";
-echo "</div>";
-?>
-    </div>
+</div>
   </div>
 
 

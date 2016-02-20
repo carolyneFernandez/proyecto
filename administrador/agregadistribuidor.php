@@ -38,27 +38,18 @@
 
          $consulta="SELECT * FROM coddistribuidor";
              $result=$connection->query($consulta);
-
-
-
-            echo "<form method='post' action='#' enctype='multipart/form-data'>";
+             echo "<form method='post' action='#' enctype='multipart/form-data'>";
           echo "<input type='hidden'name='coddistribuidor'> ";
             echo " <label>Nombre del distribuidor:</label>";
-
             echo "<input type='text' name='nombre'  class='form-control'>";
-
-          echo " <label>Localidad:</label>";
+            echo " <label>Localidad:</label>";
           echo "<input type='text' name='localidad'  class='form-control'>";
           echo " <label>Provincia : </label><br>";
           echo "<input type='text' name='provincia'  class='form-control'>";
           echo " <label>CIF:</label>";
           echo  "<input type='text' name='cif'  class='form-control'>";
-
           echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
           echo "</form>";
-
-
-
     }else{
     $coddistribuidor=$_POST['coddistribuidor'];
     $nombre=$_POST['nombre'];
