@@ -29,6 +29,7 @@ if(isset($_SESSION['nombre']) && $_SESSION['nombre'] != ''){
                       Ver perfil
                     </a>
                     </li>
+                  
                     <li><a href='../plantilla/cerrar.php'>
                     <span class='glyphicon glyphicon-log-in'></span>Cerrar sesion
                     </a>

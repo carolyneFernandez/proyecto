@@ -55,6 +55,8 @@
               <th>Pais</th>
               <th>Adminstrador</th>
               <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Estado</th>
               <th>Editar</th>
               <th>Eliminar</th>
 
@@ -76,6 +78,9 @@
               echo "<td>".$obj->pais."</td>";
               echo "<td>".$obj->administrador."</td>";
               echo "<td>".$obj->direccion."</td>";
+              echo "<td>".$obj->telefono."</td>";
+              echo "<td>".$obj->estado."</td>";
+
               echo "<td><center><a href='editar-usu.php?id=$obj->codusuario'><img src='../admin/1.png'></center></td>";
               echo "<td><center><a href='eliminar-usu.php?id=$obj->codusuario'><img src='../admin/eliminar.jpg'></center></td>";
               echo "</tr>";

@@ -42,7 +42,7 @@ if ($connection->connect_errno) {
 
 }
 $connection->set_charset("utf8");
-$consulta=("SELECT * from producto where  categoria='pantalones' and sexo='mujer';");
+$consulta=("SELECT * from producto where  categoria='zapatos' and sexo='nino';");
 
 	$result = $connection->query($consulta);
   if (isset($result) && $result->num_rows==0) {
@@ -55,14 +55,13 @@ $consulta=("SELECT * from producto where  categoria='pantalones' and sexo='mujer
 
 while($obj = $result->fetch_object()) {
       echo "<div class='contenedor_principal'>";
-      echo "<center>";
-
-      echo "<img src='../imagenes/$obj->foto'>";
-
-      echo "<p id='parrafo'><b>$obj->nombre</b></p>";
+      echo "<center>
+      <a href='clienteproducto.php?id=$obj->codproducto'><img src='../imagenes/$obj->foto'</a>";
+      echo "<p id='parrafo'><center>
+      <b>$obj->nombre</b>
+      </center></p>";
     echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
-      echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-info'>Ver detalles</button></a>";
-      echo"</center>";
+      echo "<button type='button' class='btn btn-info'>Ver detalles</button></center>";
       echo "</div>";
     }
 

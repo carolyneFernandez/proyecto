@@ -2,8 +2,9 @@
   include_once("../plantilla/db_configuration.php");
 ?>
 <?php
-    include "plantilla/sesionadmin.php"
+    include "../plantilla/sesionadmin.php"
 ?>
+
 
 <!DOCTYPE html>
 <html lang="">
@@ -15,11 +16,18 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src=""></script>
+    <link rel="stylesheet" href="../css/administrador.css">
+      <link rel="stylesheet" href="../css/foot.css">
+        <link rel="stylesheet" href="../css/editar.css">
 </head>
 
 <body>
-       <h3>EDITAR</h3>
+  <?php
+      include "../plantilla/cabeceradmin.php"
+  ?>
+      <center>
+         <h3><b>Edita tus datos personales </b></h3>
+      </center>
  <div id="center" class="container">
 
    <?php
@@ -41,7 +49,7 @@
     $obj = $result->fetch_object();
     echo "<form method='post' action='#'>";
     echo " <label>Nombre :</label>";
-    echo  "<input type='text' name='nombre'  value='$obj->Nombre' class='form-control'>";
+    echo  "<input type='text' name='nombre'  value='$obj->Nombre' class='form-control' >";
     echo "<input type='hidden'name='id' value='$obj->codusuario'> ";
     echo " <label>Apellido:</label>";
     echo "<input type='text' name='apellido'  value='$obj->apellido' class='form-control'>";
@@ -55,7 +63,10 @@
     echo  "<input type='text' name='pais'  value='$obj->pais' class='form-control'>";
     echo " <label>Direccion:</label>";
     echo  "<input type='text' name='direccion'  value='$obj->direccion' class='form-control'>";
-
+    echo " <label>Telefono:</label>";
+    echo  "<input type='text' name='Telefono'  value='$obj->telefono' class='form-control'>";
+    echo " <label>Estado:</label>";
+    echo  "<input type='text' name='Telefono'  value='$obj->estado' class='form-control'>";
     echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
     echo "</form>";
 }else{
@@ -91,5 +102,8 @@ pais='".$pais."',direccion='".$direccion."' WHERE codusuario=$id";
 ?>
 
 </div>
+<?php
+    include "../plantilla/foot.php"
+?>
 </body>
 </html>

@@ -17,7 +17,7 @@
          otro elemento que se pueda ocultar al minimizar la barra -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li ><a href="../usuarios/index.php">Inicio</a></li>
+        <li ><a href="../usuarios/index.php">INICIO</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             MUJERES<b class="caret"></b>
@@ -38,10 +38,10 @@
             HOMBRE<b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="chaqueta-mujer.php">Chaquetas</a> </li>
+            <li><a href="chaqueta-hombre.php">Chaquetas</a> </li>
             <li class="divider"></li>
 
-              <li><a href="vaquero.php">Vaqueros</a> </li>
+              <li><a href="pantalon-hombre.php">Vaqueros</a> </li>
 
           </ul>
 
@@ -79,7 +79,18 @@
                           <li><a href='perfil.php'><span class='glyphicon glyphicon-user'></span>
                             Ver perfil
                           </a>
+                        </li>
+
+                      <?PHP
+                      if( $_SESSION["administrador"]=="0"){
+                     ?>
+                          <li><a href='../administrador/administrador.php'>
+                          <span class='glyphicon glyphicon-log-in'></span>Vuelve a la pagina administrador
+                          </a>
+
                           </li>
+                          <?php
+                        }?>
                           <li><a href='../plantilla/cerrar.php'>
                           <span class='glyphicon glyphicon-log-in'></span>Cerrar sesion
                           </a>
