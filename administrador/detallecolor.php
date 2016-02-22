@@ -37,9 +37,7 @@
         $connection->set_charset("utf8");
 
 
-        $consulta2="SELECT  DISTINCT nombretalla ,p.codproducto,nombre,nombrecolor FROM tallas  t join tallasproducto tp  on
-  tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto join colorproducto cp on p.codproducto=cp.codproducto join
-          colores c on c.idcolor=cp.idcolor where p.codproducto=$deta order by nombre;";
+        $consulta2="SELECT producto.nombre, producto.codproducto, colores.nombrecolor, tallas.nombretalla FROM producto, colores, tallas WHERE tallas.idtalla IN(SELECT tallas FROM tallasproducto WHERE codproducto = $deta) AND producto.codproducto = $deta AND colores.idcolor IN(SELECT idcolor FROM colorproducto WHERE codproducto = $deta) ORDER BY colores.nombrecolor ASC";
 
      $result2=$connection->query($consulta2);
   ?>
@@ -94,12 +92,13 @@
    echo "<fieldset>";
    echo "<legend>ELIMINAR TALLAS</legend>";
    $obj1=$result1->fetch_object();
-   echo "<input type='hidden' name='producto' value='$obj1->codproducto'>";
 
-    while ($obj1=$result1->fetch_object()) {
+    while ($obj1) {
+   echo "<input type='hidden' name='producto' value='$obj1->codproducto'>";
     echo "<label class='radi'>";
     echo  "<input id='ta' type='checkbox' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
     echo "</label>";
+	$obj1=$result1->fetch_object();
     }
     echo "  </fieldset>";
     echo "<center><button type='submit' class='btn btn-danger'>ELIMINAR</button></center>";
@@ -116,13 +115,13 @@
    echo "<fieldset>";
    echo "<legend>ELIMINAR COLOR</legend>";
    $obj3=$result3->fetch_object();
-   echo "<input type='hidden' name='producto' value='$obj3->codproducto'>";
-       while ($obj3=$result3->fetch_object()) {
+   echo "<input type='hidden' name='producto' value='$deta'>";
+       while ($obj3) {
    echo "<label class='radi' >";
    echo  "<input id=color type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
 
    echo "</label>";
-
+	$obj3=$result3->fetch_object();
    }
 
    echo "  </fieldset>";

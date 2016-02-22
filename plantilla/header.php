@@ -59,7 +59,7 @@
 
         </li>
         <li><a href="sobre.php">SOBRE NOSOTROS</a></li>
-      </ul>
+        <li>
       <?PHP
       if(isset($_SESSION['nombre']) && $_SESSION['nombre'] != ''){
 
@@ -70,7 +70,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>
                 <?PHP
-                echo $_SESSION['nombre']; ?></b> <span class="caret"></span></a>
+                echo $_SESSION['nombre']; ?></b> </a>
                 <ul class='dropdown-menu' style='width:100px;'>
                     <li>
                       <div class='collapse navbar-collapse'>
@@ -102,49 +102,53 @@
 
             </li>
           </ul>
-
-
+		</div>
       <?PHP
       }else{
       ?>
       <div  class="container-fluid">
           <ul class="nav navbar-nav" id="login">
             <li  class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-          <ul   id="login-dp" class="dropdown-menu">
-            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> </a>
+			  <ul   id="login-dp" class="dropdown-menu">
+				<li>
+					<form  method="POST"  action="login.php">
+						<div class="form-group">
 
+						   <input type="text" class="form-control" name="usuario"  required>
+						</div>
+						<div class="form-group">
 
-                    <form  method="POST"  action="login.php">
-                        <div class="form-group">
+						   <input type="password" class="form-control" name="pass"  required>
 
-                           <input type="text" class="form-control" name="usuario"  required>
-                        </div>
-                        <div class="form-group">
+						</div>
+						<div class="form-group">
 
-                           <input type="password" class="form-control" name="pass"  required>
+						   <input type="submit" class="btn btn-primary btn-block" value="ENTRA"/>
 
-                        </div>
-                        <div class="form-group">
+						   <a href="registro.php">Si no tienes una cuenta pincha aqui y registrate</a>
+						</div>
 
-                           <input type="submit" class="btn btn-primary btn-block" value="ENTRA"/>
-
-                           <a href="registro.php">Si no tienes una cuenta pincha aqui y registrate</a>
-                        </div>
-
-                     </form>
-                  </div>
-
-               </div>
+					 </form>
+				</li>
+			  </ul>
             </li>
           </ul>
-            </li>
-          </ul>
+	  </div>
 
       <?php
       }
       ?>
-
+		</li>
+		<?PHP if(isset($_SESSION['carrito'])){ 
+		$total = 0;
+		foreach($_SESSION['carrito'] as $articulo){
+			$total+=$articulo['cantidad'];
+		}
+		?>
+		<li><a href="carrito.php"><i class="fa fa-shopping-cart fa-lg"></i> <span class="badge"><?PHP echo $total; ?></span></a></li>
+		<?PHP } ?>
+      </ul>
 
     </div>
   </nav>

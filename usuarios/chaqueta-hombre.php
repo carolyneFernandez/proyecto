@@ -10,7 +10,6 @@ if ($connection->connect_errno) {
 
 }
 
-	$result = $connection->query($consulta);
 
 ?>
 

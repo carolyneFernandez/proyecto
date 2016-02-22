@@ -8,7 +8,7 @@
   } else {
     $db_user="root"; //my db user
     $db_host="localhost"; //my db host
-    $db_password="carolyne"; //my db password
+    $db_password="carolyne"; //my db password ORIGINAL
     $db_name="tienda"; //my db name
   }
 ?>

@@ -35,7 +35,8 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
       //MAKING A SELECT QUERY
       /* Consultas de selección que devuelven un conjunto de resultados */
       $connection->set_charset("utf8");
-      if ($result = $connection->query("SELECT p.*,d.nombre nombred FROM  producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor")) {
+      if ($result = $connection->query("SELECT p.*,d.nombre nombred FROM
+        producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor")) {
 
 
 
@@ -58,8 +59,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               <th>Sexo</th>
               <th>Editar</th>
               <th>Eliminar</th>
-              <th> Ver Detalles</th>
-
+            
 
           </thead>
 
@@ -81,7 +81,6 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               echo "<td>".$obj->sexo."</td>";
               echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
               echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
-              echo "<td><center><a href='?deta=$obj->codproducto'><button type='button' class='btn btn-info'>Detalles</button></center></td>";
 
               echo "</tr>";
 
@@ -96,11 +95,5 @@ echo "</table>";
 
     ?>
     </div>
-
-    <!--DETALLES-->
-
-
-
-
   </body>
   </html>

@@ -10,6 +10,7 @@ session_start();
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="../css/foot.css">
       <link rel="stylesheet" href="../css/index.css">
   </head>
@@ -19,7 +20,7 @@ session_start();
       include "../plantilla/header.php"
       ?>
       <?php
-      include "../plantilla/logeado.php"
+      //include "../plantilla/logeado.php"
       ?>
 <seccion class="jumbotron">
   <div class="container">
