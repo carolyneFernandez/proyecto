@@ -78,26 +78,27 @@ echo "<div id='cuerpo'>";
       	No existen productos en la categoria indicada.
          </p>";
         } else {
+          
           while($objcolores = $resultcolores->fetch_object()){
             $color= $objcolores->nombrecolor;
             switch ($color) {
             case 'Negro':
-              echo "<div id='negro'></div>";
+              echo "<div class='color' id='negro'></div>";
             break;
             case 'Rojo':
-              echo "<div id='rojo'></div>";
+              echo "<div class='color' id='rojo'></div>";
             break;
             case 'Gris':
-              echo "<div id='grey'></div>";
+              echo "<div class='color' id='grey'></div>";
             break;
             case 'Marron':
-              echo "<div id='marron'></div>";
+              echo "<div class='color' id='marron'></div>";
             break;
             case 'Blanco':
-              echo "<div id='blanco'></div>";
+              echo "<div class='color' id='blanco'></div>";
             break;
             case 'Verde':
-              echo "<div id='verde'></div>";
+              echo "<div class='color' id='verde'></div>";
             break;
             default:
               echo "No hay colores";
