@@ -1,4 +1,4 @@
-  <header>
+<header>
      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <!-- El logotipo y el icono que despliega el menú se agrupan
          para mostrarlos mejor en los dispositivos móviles -->
@@ -140,14 +140,27 @@
       }
       ?>
 		</li>
-		<?PHP if(isset($_SESSION['carrito'])){ 
+		<?PHP if(isset($_SESSION['carrito'])){
 		$total = 0;
-		foreach($_SESSION['carrito'] as $articulo){
-			$total+=$articulo['cantidad'];
+		foreach($_SESSION['carrito'] as $producto){
+			if(isset($producto['cantidad'])){
+				$total+=$producto['cantidad'];
+			}
 		}
 		?>
 		<li><a href="carrito.php"><i class="fa fa-shopping-cart fa-lg"></i> <span class="badge"><?PHP echo $total; ?></span></a></li>
-		<?PHP } ?>
+		<?PHP }
+		if(isset($_REQUEST['mensaje']) && $_REQUEST['mensaje'] == '1'){
+		?>
+		<li><label style="margin-top:15px;margin-left:15px;" class="text-danger"><strong>El DNI indicado ya se encuentra en uso en la base de datos</strong></label></li>
+		<?PHP
+			}
+		if(isset($_REQUEST['mensaje']) && $_REQUEST['mensaje'] == '2'){
+		?>
+		<li><label style="margin-top:15px;margin-left:15px;" class="text-success"><strong>El usuario ha sido creado correctamente</strong></label></li>
+		<?PHP
+			}
+		?>
       </ul>
 
     </div>

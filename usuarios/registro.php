@@ -69,19 +69,25 @@ $pais=$_POST['pais'];
           exit();
 
       }
+		$resultado = $connection->query("SELECT * FROM usuarios WHERE dni = '".$dni."'");
+		if($resultado->num_rows > 0){
+			header('location:index.php?mensaje=1');
+		}else{
 
 
-$consulta="INSERT INTO `tienda`.`usuarios` (`codusuario`, `nombre`, `apellido`, `dni`, `localidad`, `provincia`, `pais`, `administrador`, `direccion`, `passwd`)
+		$consulta="INSERT INTO `tienda`.`usuarios` (`codusuario`, `nombre`, `apellido`, `dni`, `localidad`, `provincia`, `pais`, `administrador`, `direccion`, `passwd`)
 VALUES (NULL, '$nombre', '$apellido', '$dni', '$localidad', '$provincia', '$pais', '1', '$direccion', MD5('$passwd'))";
           if($connection->query($consulta)==true){
 
-              header('Location:index.php');
+              header('Location:index.php?mensaje=2');
 
           }else{
               echo $connection->error;
 
           }
           unset($connection);
+		}
+
 
       ?>
  <?php endif ?>

@@ -63,6 +63,7 @@ echo "<div id='cuerpo'>";
 			<input type="hidden" name="id_producto" value="<?PHP echo $obj->codproducto; ?>">
 			<input type="hidden" name="nombre_producto" value="<?PHP echo $obj->nombre; ?>">
 			<input type="hidden" name="precio_producto" value="<?PHP echo $obj->precio; ?>">
+      	<input type="hidden" name="nombre_color" value="<?PHP echo $obj->color; ?>">
 		<?PHP
         echo "<h4><b>".$obj->nombre."</b></h4>";
         echo "<p>Precio de Venta:";
@@ -71,42 +72,20 @@ echo "<div id='cuerpo'>";
         echo "<p>Colores Disponibles </p>";
         $consultacolores="SELECT DISTINCT c.nombrecolor FROM colores c join colorproducto cp on c.idcolor=cp.idcolor
          where cp.codproducto=".$obj->codproducto;
-  ;
         $resultcolores = $connection->query($consultacolores);
         if (isset($resultcolores) && $resultcolores->num_rows==0) {
         echo "<p>
       	No existen productos en la categoria indicada.
          </p>";
         } else {
-          
-          while($objcolores = $resultcolores->fetch_object()){
-            $color= $objcolores->nombrecolor;
-            switch ($color) {
-            case 'Negro':
-              echo "<div class='color' id='negro'></div>";
-            break;
-            case 'Rojo':
-              echo "<div class='color' id='rojo'></div>";
-            break;
-            case 'Gris':
-              echo "<div class='color' id='grey'></div>";
-            break;
-            case 'Marron':
-              echo "<div class='color' id='marron'></div>";
-            break;
-            case 'Blanco':
-              echo "<div class='color' id='blanco'></div>";
-            break;
-            case 'Verde':
-              echo "<div class='color' id='verde'></div>";
-            break;
-            default:
-              echo "No hay colores";
-                break;
-            }
+          echo "<select  name='color'>";
+        while($objcolores = $resultcolores->fetch_object()){
 
-          }
-        }echo "<br>";
+          echo "<option value='".$objcolores->nombrecolor."'>".$objcolores->nombrecolor."</option>";
+        }
+        echo "</select><br>";
+
+        }
         echo "<p style='clear:both;'>Tallas Disponibles :</p>";
         $consultalla="SELECT DISTINCT t.nombretalla, t.idtalla FROM tallasproducto tp join tallas  t on  tp.tallas=t.idtalla
          where tp.codproducto=".$obj->codproducto;
@@ -125,7 +104,11 @@ echo "<div id='cuerpo'>";
 
         echo "<p>Descripcion : </p>";
         echo "<p class='parrafo'>".$obj->descripcion."</p>";
-        echo "<button type='submit' class='btn btn-info'>Añadir Carrito</button>";
+        if($obj->stock==0){
+          echo "El producto no esta disponible";
+      }else{
+              echo "<button type='submit' class='btn btn-info'>Añadir Carrito</button>";
+      }
 		?>
 		</form>
 		<?PHP

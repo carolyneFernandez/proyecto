@@ -42,7 +42,7 @@ if ($connection->connect_errno) {
 		<br />
 		<div class="container" style="color:black;">
 			<!-- PRINT THE TABLE AND THE HEADER -->
-			
+
 		<?php
 			if(isset($_SESSION['carrito'])){
 		?>
@@ -79,12 +79,13 @@ if ($connection->connect_errno) {
 					<tr class="info" >
 						<th></th><th></th><th></th><th></th><th>Total</th><th><?PHP echo $total.'&#8364'; ?></th><th></th>
 					</tr>
-			
+
 			</table>
+			<a class='btn btn-info' href="../plantilla/realizarPedido.php">Pagar</a>  <!--enlace a realizar pedios-->
 		<?PHP
 			}else{
 		?>
-			<h1>NO EXISTEN ARTÕCULOS EN EL CARRITO</h1>
+			<h1>NO EXISTEN ART√çCULOS EN EL CARRITO</h1>
 		<?PHP
 			}
 		?>
