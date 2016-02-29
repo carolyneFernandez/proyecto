@@ -1,3 +1,4 @@
+
 <?php
   include_once("../plantilla/db_configuration.php");
 ?>
@@ -9,8 +10,6 @@ if ($connection->connect_errno) {
     header('location: index.php');
 
 }
-
-	$result = $connection->query($consulta);
 
 ?>
 
@@ -29,7 +28,10 @@ if ($connection->connect_errno) {
         <link rel="stylesheet" href="../css/foot.css">
     </head>
     <body>
+      <?php
+      if(isset($_SESSION['nombre'])){
 
+      ?>
 <?php
   include "../plantilla/header.php"
 ?>
@@ -55,15 +57,20 @@ $consulta=("SELECT * from producto where  categoria='pantalones' and sexo='hombr
     echo  "<div class='cuerpo'>";
 
 while($obj = $result->fetch_object()) {
-      echo "<div class='contenedor_principal'>";
-      echo "<center>
-      <a href='clienteproducto.php?id=$obj->codproducto'><img src='../imagenes/$obj->foto'</a>";
-      echo "<p id='parrafo'><center>
-      <b>$obj->nombre</b>
-      </center></p>";
-    echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
-      echo "<button type='button' class='btn btn-info'>Ver detalles</button></center>";
-      echo "</div>";
+  echo "<div class='contenedor_principal'>";
+  echo "<center>";
+
+  echo "<img src='../imagenes/$obj->foto'>";
+
+  echo "<p id='parrafo'><b>$obj->nombre</b></p>";
+echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
+if($obj->stock==0){
+  echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Ver detalles</button></a>";
+}else{
+    echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-info'>Ver detalles</button></a>";
+}
+  echo"</center>";
+  echo "</div>";
     }
 
   }
@@ -75,7 +82,11 @@ while($obj = $result->fetch_object()) {
 <?php
   include "../plantilla/foot.php"
 ?>
-
+<?php
+}else{
+  header("Location:registro.php");
+}
+  ?>
 
     </body>
 </html>

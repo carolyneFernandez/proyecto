@@ -1,3 +1,4 @@
+
 <?php
   include_once("../plantilla/db_configuration.php");
 ?>
@@ -27,7 +28,10 @@ if ($connection->connect_errno) {
         <link rel="stylesheet" href="../css/foot.css">
     </head>
     <body>
+      <?php
+      if(isset($_SESSION['nombre'])){
 
+      ?>
 <?php
   include "../plantilla/header.php"
 ?>
@@ -44,6 +48,7 @@ $connection->set_charset("utf8");
 $consulta=("SELECT * from producto where  categoria='chaquetas' and sexo='mujer';");
 
 	$result = $connection->query($consulta);
+
   if (isset($result) && $result->num_rows==0) {
   echo "<p>
 	No existen productos en la categoria indicada.
@@ -78,7 +83,11 @@ if($obj->stock==0){
 <?php
   include "../plantilla/foot.php"
 ?>
-
+<?php
+}else{
+  header("Location:registro.php");
+}
+  ?>
 
     </body>
 </html>

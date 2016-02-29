@@ -1,3 +1,4 @@
+
 <?php
   include_once("../plantilla/db_configuration.php");
 ?>
@@ -10,7 +11,6 @@ if ($connection->connect_errno) {
 
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +22,16 @@ if ($connection->connect_errno) {
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/chaqueta.css">
       <link rel="stylesheet" href="../css/index.css">
         <link rel="stylesheet" href="../css/foot.css">
     </head>
     <body>
+      <?php
+      if(isset($_SESSION['nombre'])){
 
+      ?>
 <?php
   include "../plantilla/header.php"
 ?>
@@ -41,7 +45,7 @@ if ($connection->connect_errno) {
 
 }
 $connection->set_charset("utf8");
-$consulta=("SELECT * from producto where  categoria='chaqueta' and sexo='hombre';");
+$consulta=("SELECT * from producto where  categoria='chaquetas' and sexo='hombre';");
 
 	$result = $connection->query($consulta);
   if (isset($result) && $result->num_rows==0) {
@@ -60,7 +64,11 @@ while($obj = $result->fetch_object()) {
 
   echo "<p id='parrafo'><b>$obj->nombre</b></p>";
 echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
-  echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-info'>Ver detalles</button></a>";
+if($obj->stock==0){
+  echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Ver detalles</button></a>";
+}else{
+    echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-info'>Ver detalles</button></a>";
+}
   echo"</center>";
   echo "</div>";
     }
@@ -74,7 +82,11 @@ echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
 <?php
   include "../plantilla/foot.php"
 ?>
-
+<?php
+}else{
+  header("Location:registro.php");
+}
+  ?>
 
     </body>
 </html>

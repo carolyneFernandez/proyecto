@@ -46,18 +46,7 @@
           </ul>
 
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          NIÑO<b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="accesorios.php">Accesorios</a> </li>
-            <li class="divider"></li>
-             <li><a href="zapatos.php">Zapatos</a> </li>
-
-          </ul>
-
-        </li>
+      
         <li><a href="sobre.php">SOBRE NOSOTROS</a></li>
         <li>
       <?PHP

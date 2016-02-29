@@ -1,6 +1,7 @@
 <?php
   include_once("../plantilla/db_configuration.php");
 ?>
+
 <?php
   session_start();
    $connection = new mysqli($db_host, $db_user, $db_password, $db_name);

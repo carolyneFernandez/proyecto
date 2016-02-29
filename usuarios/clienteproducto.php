@@ -1,3 +1,4 @@
+
 <?php
   include_once("../plantilla/db_configuration.php");
 ?>
@@ -27,6 +28,10 @@ if ($connection->connect_errno) {
         <link rel="stylesheet" href="../css/clienteproducto.css">
     </head>
     <body>
+      <?php
+      if(isset($_SESSION['nombre'])){
+
+      ?>
 <?php
   include "../plantilla/header.php"
 ?>
@@ -105,7 +110,7 @@ echo "<div id='cuerpo'>";
         echo "<p>Descripcion : </p>";
         echo "<p class='parrafo'>".$obj->descripcion."</p>";
         if($obj->stock==0){
-          echo "El producto no esta disponible";
+              echo "<button type='button' class='btn btn-danger'>NO HAY PRODUCTO DISPONIBLE</button>";
       }else{
               echo "<button type='submit' class='btn btn-info'>Añadir Carrito</button>";
       }
@@ -124,5 +129,10 @@ echo "</div>"
 <?php
   include "../plantilla/foot.php"
 ?>
+<?php
+}else{
+  header("Location:registro.php");
+}
+  ?>
     </body>
 </html>
