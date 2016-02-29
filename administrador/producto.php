@@ -12,8 +12,15 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="css/administrador.css">
 
+<style>
+.color{
+color:red;
+}
+.color1{
+color:orange;
+}
+</style>
     <title></title>
 </head>
   <body>
@@ -59,7 +66,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               <th>Sexo</th>
               <th>Editar</th>
               <th>Eliminar</th>
-            
+
 
           </thead>
 
@@ -68,6 +75,39 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
           //FETCHING OBJECTS FROM THE RESULT SET
           //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
           while($obj = $result->fetch_object()) {
+            if($obj->stock==0){
+              echo "<tr class='color'>";
+              echo "<td>".$obj->codproducto."</td>";
+              echo "<td>".$obj->nombred."</td>";
+              echo "<td>".$obj->nombre."</td>";
+              echo "<td>".$obj->descripcion."</td>";
+              echo "<td>".$obj->stock."</td>";
+              echo "<td>".$obj->foto."</td>";
+              echo "<td>".$obj->categoria."</td>";
+              echo "<td>".$obj->precio."</td>";
+              echo "<td>".$obj->sexo."</td>";
+              echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
+              echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
+
+              echo "</tr>";
+
+            }elseif($obj->stock>0 and $obj->stock<10  ){
+              echo "<tr class='color1'>";
+              echo "<td>".$obj->codproducto."</td>";
+              echo "<td>".$obj->nombred."</td>";
+              echo "<td>".$obj->nombre."</td>";
+              echo "<td>".$obj->descripcion."</td>";
+              echo "<td>".$obj->stock."</td>";
+              echo "<td>".$obj->foto."</td>";
+              echo "<td>".$obj->categoria."</td>";
+              echo "<td>".$obj->precio."</td>";
+              echo "<td>".$obj->sexo."</td>";
+              echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
+              echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
+
+              echo "</tr>";
+
+            }else{
               //PRINTING EACH ROW
               echo "<tr>";
               echo "<td>".$obj->codproducto."</td>";
@@ -84,7 +124,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 
               echo "</tr>";
 
-          }
+          }}
 echo "</table>";
           //Free the result. Avoid High Memory Usages
           $result->close();

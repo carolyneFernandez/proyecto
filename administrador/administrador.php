@@ -56,7 +56,6 @@
               <th>Adminstrador</th>
               <th>Direccion</th>
               <th>Telefono</th>
-              <th>Estado</th>
               <th>Editar</th>
               <th>Eliminar</th>
 
