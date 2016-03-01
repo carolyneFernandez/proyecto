@@ -44,7 +44,9 @@
 
 
   <div class="col-mod-10 cold-offset-1">
+
       <div class="nav nav-tabs well well-sm" style="text-aling:center;">
+          <a href="cyt.php" ><img src="../admin/atras.jpg"  width=2% height=2%></a>
         <h5>Detalles del Producto</h5>
         <div class="table-responsive">
           <table style="margin-top:-1%,text-align:center;font-size:90%" class="table table-hover table-bordered">
