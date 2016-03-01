@@ -72,7 +72,7 @@
             }
             ?>
           </table>
-        </div>
+        </div>  <a href="cyt.php" ><img src="../admin/atras.jpg"  width=2% height=2%></a>
       </div>
   </div>
   <?php
