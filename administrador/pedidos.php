@@ -55,7 +55,7 @@ u.codusuario=p.codusuario join incluyen i on p.codpedido=i.codpedido join produc
               <th>Precio del Producto</th>
               <th>Importe total del pedido</th>
 
-
+</tr>
 
           </thead>
 
@@ -86,6 +86,7 @@ u.codusuario=p.codusuario join incluyen i on p.codpedido=i.codpedido join produc
       } //END OF THE IF CHECKING IF THE QUERY WAS RIGHT
 
     ?>
+  </table>
     </div>
 
   </body>
