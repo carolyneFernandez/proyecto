@@ -46,15 +46,24 @@
     echo  "<input type='hidden' name='coddistribuidor'  value='$obj->coddistribuidor' class='form-control'>";
     echo " <label>Nombre del Producto:</label><br>";
     echo "<input type='text' name='nombre'  value='$obj->nombre' class='form-control'>";
-    echo " <label>Nombre del distribuidor:</label>";
-    echo "<select>";
-    $consulta1="SELECT DISTINCT d.nombre FROM producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor;";
+    
 
-        $result1=$connection->query($consulta1);
-  while( $obj1 = $result1->fetch_object()){
-    echo "<option value='$obj->coddistribuidor'>$obj1->nombre</option>";
-  }
-  echo "</select><br>";
+
+  $consulta1="SELECT * FROM distribuidor";
+
+       $result1=$connection->query($consulta1);
+
+
+     echo " <label>Nombre del  Distribuidor:</label>";
+   echo "<select  name='coddistribuidor'>";
+ while( $obj1 = $result1->fetch_object()){
+   echo "<option value='$obj1->coddistribuidor'>$obj1->nombre</option>";
+ }
+ echo "</select><br>";
+
+
+
+
 
     echo " <label>Descripcion:</label> <br>";
     echo "<textarea name='descripcion' style='width: 500px; height: 150px;' >$obj->descripcion</textarea> <br>";

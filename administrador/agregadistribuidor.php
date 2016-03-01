@@ -15,11 +15,14 @@
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="../css/administrador.css">
 
-    <title></title>
+    <title>Añadir Distribuidor</title>
 </head>
     <body>
+      <?php
+        include_once("../plantilla/cabeceradmin.php");
+      ?>
         <center>
-          <b><h3>Añadir</h3></b>
+          <b><h3>Añadir Distribuidor</h3></b>
 
         </center>
      <div id="center" class="container">

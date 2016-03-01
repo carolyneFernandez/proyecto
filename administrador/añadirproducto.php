@@ -42,7 +42,7 @@
 
         $result1=$connection->query($consulta1);
       echo "<form method='post' action='#' enctype='multipart/form-data'>";
-    echo "<input type='hidden'name='codproducto'> ";
+
       echo " <label>Nombre del  Distribuidor:</label>";
     echo "<select  name='coddistribuidor'>";
   while( $obj1 = $result1->fetch_object()){

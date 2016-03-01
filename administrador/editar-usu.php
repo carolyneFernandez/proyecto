@@ -26,7 +26,7 @@
       include "../plantilla/cabeceradmin.php"
   ?>
       <center>
-         <h3><b>Edita tus datos personales </b></h3>
+         <h3><b>EDITA LOS DATOS DEL USUARIO</b></h3>
       </center>
  <div id="center" class="container">
 
@@ -65,8 +65,7 @@
     echo  "<input type='text' name='direccion'  value='$obj->direccion' class='form-control'>";
     echo " <label>Telefono:</label>";
     echo  "<input type='text' name='Telefono'  value='$obj->telefono' class='form-control'>";
-    echo " <label>Estado:</label>";
-    echo  "<input type='text' name='Telefono'  value='$obj->estado' class='form-control'>";
+
     echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
     echo "</form>";
 }else{
