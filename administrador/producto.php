@@ -40,7 +40,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
       /* Consultas de selección que devuelven un conjunto de resultados */
       $connection->set_charset("utf8");
       $consulta="SELECT p.*,d.nombre nombred FROM
-        producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor where categoria='chaquetas'";
+        producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor where categoria='chaquetas' and sexo='mujer'";
       $result = $connection->query($consulta)
       ?>
 <div class="container">
@@ -369,7 +369,7 @@ echo "</table>";
 
 $connection->set_charset("utf8");
 $consulta="SELECT p.*,d.nombre nombred FROM
-  producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor where categoria='chaqueta' and sexo='hombre'";
+  producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor where categoria='chaquetas' and sexo='hombre'";
 $result = $connection->query($consulta)?>
 <!-- otra tabla -->
 <!-- PRINT THE TABLE AND THE HEADER -->
