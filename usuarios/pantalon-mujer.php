@@ -64,7 +64,7 @@ while($obj = $result->fetch_object()) {
 
   echo "<p id='parrafo'><b>$obj->nombre</b></p>";
 echo "<button type='button' class='btn btn-info'>$obj->precio €</button>";
-if($obj->stock==0){
+if($obj->stock<=0){
   echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Ver detalles</button></a>";
 }else{
     echo "<a href='clienteproducto.php?id=$obj->codproducto'><button type='button' class='btn btn-info'>Ver detalles</button></a>";

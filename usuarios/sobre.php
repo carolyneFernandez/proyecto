@@ -33,6 +33,7 @@ session_start();
              empezar a combinar y crear los mejores outfits para estar siempre perfecta.
               Encontrarás todo lo que te puedas imaginar y más.
           </p>
+        
         </div>
         <div  class="uno">
           <img src="../imagenes/sobre/1.jpg">

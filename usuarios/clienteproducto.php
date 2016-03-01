@@ -109,7 +109,7 @@ echo "<div id='cuerpo'>";
 
         echo "<p>Descripcion : </p>";
         echo "<p class='parrafo'>".$obj->descripcion."</p>";
-        if($obj->stock==0){
+        if($obj->stock<=0){
               echo "<button type='button' class='btn btn-danger'>NO HAY PRODUCTO DISPONIBLE</button>";
       }else{
               echo "<button type='submit' class='btn btn-info'>Añadir Carrito</button>";

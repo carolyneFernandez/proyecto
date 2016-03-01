@@ -76,7 +76,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
           //FETCHING OBJECTS FROM THE RESULT SET
           //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
           while($obj = $result->fetch_object()) {
-            if($obj->stock==0){
+            if($obj->stock<=0){
               echo "<tr class='color'>";
               echo "<td>".$obj->codproducto."</td>";
               echo "<td>".$obj->nombred."</td>";
