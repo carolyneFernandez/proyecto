@@ -28,13 +28,6 @@ session_start();
 	<?php
 			include "../plantilla/header.php"
 	?>
-  <ul class="nav nav-pills">
-  <li class="active"><a href="#">Inicio</a></li>
-  <li><a href="#"> </a></li>
-  <li><a href="#">Mensajes</a></li>
-</ul>
-
-
 
     <?php
 
@@ -116,6 +109,8 @@ session_start();
 											<input class="form-control" type="text" name="pais" value=<?php echo $obj->pais?>>
 										</div>
 									</div>
+
+                
 
 					  </div>
 
