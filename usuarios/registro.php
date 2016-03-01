@@ -28,7 +28,7 @@
 <label>Registrate gratis y rapido</label>
     <input type="text" name="nombre"  class="form-control" required placeholder="Nombre" style=width: 15%; >
 
-    <input type="text" name="passwd" class="form-control" required placeholder="Contraseña" >
+    <input type="password" name="passwd" class="form-control" required placeholder="Contraseña" >
 
     <input type="text" name="apellido"  class="form-control" required placeholder="Apellidos" >
 
