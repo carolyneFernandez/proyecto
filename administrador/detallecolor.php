@@ -96,7 +96,7 @@
     while ($obj1) {
    echo "<input type='hidden' name='producto' value='$obj1->codproducto'>";
     echo "<label class='radi'>";
-    echo  "<input id='ta' type='checkbox' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
+    echo  "<input id='ta' type='radio' name ='talla' value='$obj1->tallas'>$obj1->nombretalla<br>";
     echo "</label>";
 	$obj1=$result1->fetch_object();
     }
@@ -118,7 +118,7 @@
    echo "<input type='hidden' name='producto' value='$deta'>";
        while ($obj3) {
    echo "<label class='radi' >";
-   echo  "<input id=color type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
+   echo  "<input id=color  type='radio'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
 
    echo "</label>";
 	$obj3=$result3->fetch_object();
@@ -149,7 +149,7 @@ tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto ";
   while ($obj4) {
    echo "<input type='hidden' name='producto' value='$deta'>";
  echo "<label class='radi'>";
- echo  "<input id='ta' type='checkbox' name ='talla' value='$obj4->tallas'>$obj4->nombretalla<br>";
+ echo  "<input id='ta'  type='radio'name ='talla' value='$obj4->tallas'>$obj4->nombretalla<br>";
 
  echo "</label>";
 $obj4=$result4->fetch_object();
@@ -173,7 +173,7 @@ echo "<center><form name='myform1' action='agregacolor.php'  method='POST'>";
  echo "<input type='hidden' name='producto' value='$deta'>";
  while ($obj3) {
  echo "<label class='radi' >";
- echo  "<input id=color type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
+ echo  "<input id=color type='radio'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
  echo "</label>";
 $obj3=$result3->fetch_object();
  }
