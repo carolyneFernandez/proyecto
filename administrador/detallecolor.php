@@ -84,7 +84,7 @@
 
       <?php
       $consulta1="SELECT DISTINCT nombretalla ,p.codproducto,tp.tallas FROM tallas  t join tallasproducto tp  on
-  tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto where p.codproducto=$deta order by nombre";
+  tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto where p.codproducto=$deta order by nombretalla";
 
    $result1=$connection->query($consulta1);
    echo "<div class='cuerpo'>";

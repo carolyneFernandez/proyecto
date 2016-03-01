@@ -29,24 +29,18 @@ color:orange;
     ?>
 
     <?php
-
       //CREATING THE CONNECTION
 $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
-
       //TESTING IF THE CONNECTION WAS RIGHT
       if ($connection->connect_errno) {
           printf("Connection failed: %s\n", $connection->connect_error);
           exit();
       }
-
       //MAKING A SELECT QUERY
       /* Consultas de selección que devuelven un conjunto de resultados */
       $connection->set_charset("utf8");
       if ($result = $connection->query("SELECT p.*,d.nombre nombred FROM
         producto p join distribuidor d on p.coddistribuidor=d.coddistribuidor")) {
-
-
-
       ?>
 <div class="container">
 
@@ -71,7 +65,6 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
           </thead>
 
       <?php
-
           //FETCHING OBJECTS FROM THE RESULT SET
           //THE LOOP CONTINUES WHILE WE HAVE ANY OBJECT (Query Row) LEFT
           while($obj = $result->fetch_object()) {
@@ -88,9 +81,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               echo "<td>".$obj->sexo."</td>";
               echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
               echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
-
               echo "</tr>";
-
             }elseif($obj->stock>0 and $obj->stock<10  ){
               echo "<tr class='color1'>";
               echo "<td>".$obj->codproducto."</td>";
@@ -104,9 +95,7 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               echo "<td>".$obj->sexo."</td>";
               echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
               echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
-
               echo "</tr>";
-
             }else{
               //PRINTING EACH ROW
               echo "<tr>";
@@ -121,18 +110,14 @@ $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
               echo "<td>".$obj->sexo."</td>";
               echo "<td><center><a href='editar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-primary'>Editar</button></center></td>";
               echo "<td><center><a href='eliminar-producto.php?id=$obj->codproducto'><button type='button' class='btn btn-danger'>Eliminar</button></center></td>";
-
               echo "</tr>";
-
           }}
 echo "</table>";
           //Free the result. Avoid High Memory Usages
           $result->close();
           unset($obj);
           unset($connection);
-
       } //END OF THE IF CHECKING IF THE QUERY WAS RIGHT
-
     ?>
     </div>
   </body>
