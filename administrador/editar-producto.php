@@ -46,7 +46,7 @@
     echo  "<input type='hidden' name='coddistribuidor'  value='$obj->coddistribuidor' class='form-control'>";
     echo " <label>Nombre del Producto:</label><br>";
     echo "<input type='text' name='nombre'  value='$obj->nombre' class='form-control'>";
-    
+
 
 
   $consulta1="SELECT * FROM distribuidor";
@@ -69,7 +69,7 @@
     echo "<textarea name='descripcion' style='width: 500px; height: 150px;' >$obj->descripcion</textarea> <br>";
 
     echo " <label>Stock:</label>";
-    echo  "<input type='text' name='stock'  value='$obj->stock' class='form-control'>";
+    echo  "<input type='numer' name='stock'  value='$obj->stock' class='form-control'>";
     echo " <label>Foto:</label>";
     echo  "<input type='text' name='foto'  value='$obj->foto' class='form-control'>";
     echo " <label>Categoria:</label>";

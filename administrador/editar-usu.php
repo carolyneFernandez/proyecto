@@ -64,7 +64,7 @@
     echo " <label>Direccion:</label>";
     echo  "<input type='text' name='direccion'  value='$obj->direccion' class='form-control'>";
     echo " <label>Telefono:</label>";
-    echo  "<input type='text' name='telefono'  value='$obj->telefono' class='form-control'>";
+    echo  "<input type='number' name='telefono'  value='$obj->telefono' class='form-control'>";
 
     echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
     echo "</form>";

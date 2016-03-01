@@ -86,7 +86,7 @@ session_start();
 
 					    <div class="input-group col-sm-3">
 					      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-					      <input class="form-control" type="text"  name="telefono" value=<?php echo $obj->telefono;?>>
+					      <input class="form-control" type="number"  name="telefono" value=<?php echo $obj->telefono;?>>
 
 					    </div>
 					  </div>
@@ -110,7 +110,7 @@ session_start();
 										</div>
 									</div>
 
-                
+
 
 					  </div>
 
