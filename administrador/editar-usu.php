@@ -64,7 +64,7 @@
     echo " <label>Direccion:</label>";
     echo  "<input type='text' name='direccion'  value='$obj->direccion' class='form-control'>";
     echo " <label>Telefono:</label>";
-    echo  "<input type='text' name='Telefono'  value='$obj->telefono' class='form-control'>";
+    echo  "<input type='text' name='telefono'  value='$obj->telefono' class='form-control'>";
 
     echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
     echo "</form>";
@@ -80,11 +80,12 @@ $localidad=$_POST['localidad'];
 $provincia=$_POST['provincia'];
 $pais=$_POST['pais'];
 $direccion=$_POST['direccion'];
+$telefono=$_POST['telefono'];
 
 
 $consulta_mysql2="UPDATE usuarios SET codusuario='.$id.',nombre='".$nombre."',apellido='".$apellido."',
 dni='".$dni."',localidad='".$localidad."',provincia='".$provincia."',
-pais='".$pais."',direccion='".$direccion."' WHERE codusuario=$id";
+pais='".$pais."',direccion='".$direccion."',telefono='".$telefono."' WHERE codusuario=$id";
 
 
 
