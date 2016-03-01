@@ -132,7 +132,60 @@
   ?>
 </div>
   </div>
+  <div class="col-mod-10 cold-offset-1">
+      <div class="nav nav-tabs well well-sm" style="text-aling:center;">
 
+    <?php
+    $consulta4="SELECT DISTINCT nombretalla ,tp.tallas FROM tallas  t join tallasproducto tp  on
+tp.tallas=t.idtalla join producto p on p.codproducto=tp.codproducto ";
+
+ $result4=$connection->query($consulta4);
+
+ echo "<div class='cuerpo'>";
+ echo "<center><form name='myform' action='agrega-talla.php'  method='POST'>";
+ echo "<fieldset>";
+ echo "<legend>AGREGAR TALLAS</legend>";
+ $obj4=$result4->fetch_object();
+  while ($obj4) {
+   echo "<input type='hidden' name='producto' value='$deta'>";
+ echo "<label class='radi'>";
+ echo  "<input id='ta' type='checkbox' name ='talla' value='$obj4->tallas'>$obj4->nombretalla<br>";
+
+ echo "</label>";
+$obj4=$result4->fetch_object();
+
+  }
+  echo "  </fieldset>";
+  echo "<center><button type='submit' class='btn btn-info'>AGREGAR</button></center>";
+  echo "  </form></center>";
+ echo "</div>";?>
+
+   <?php
+   $consulta3="SELECT DISTINCt nombrecolor,cp.idcolor FROM  producto p join colorproducto cp on p.codproducto=cp.codproducto join
+     colores c on c.idcolor=cp.idcolor order by nombre";
+
+ $result3=$connection->query($consulta3);
+ echo "<div class='cuerpo'>";
+echo "<center><form name='myform1' action='agregacolor.php'  method='POST'>";
+ echo "<fieldset>";
+ echo "<legend>AGREGAR  COLOR</legend>";
+ $obj3=$result3->fetch_object();
+ echo "<input type='hidden' name='producto' value='$deta'>";
+ while ($obj3) {
+ echo "<label class='radi' >";
+ echo  "<input id=color type='checkbox'  name='color' value='$obj3->idcolor'>$obj3->nombrecolor<br>";
+ echo "</label>";
+$obj3=$result3->fetch_object();
+ }
+
+ echo "  </fieldset>";
+ echo "<center><button type='submit' class='btn btn-info'>AGREGAR</button></center>";
+
+ echo "  </form><center>";
+  echo "</div>";
+?>
+</div>
+</div>
 
     </body>
     </html>

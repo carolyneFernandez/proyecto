@@ -20,77 +20,7 @@
       <?php
           include "../plantilla/cabeceradmin.php"
       ?>
-      <div id="izquierda">
-        <?php
-        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
-         if ($connection->connect_errno) {
-               printf("ERROR AL ESTABLECER CONTACTO CON LA BASE DE DATOS", $connection->connect_errno);
-               exit();
-           }
-           if(!isset($_POST['envia'])){
-         //    $consulta="SELECT DISTINCt nombre FROM colores c join colorproducto cp on c.idcolor=cp.idcolor
-           //   join producto p on cp.codproducto=p.codproducto";
-      $consulta="SELECT * FROM producto";
-      echo "<label>AGREGA UNA TALLA Y COLOR A UN PRODUCTO</label>";
-      $result=$connection->query($consulta);
-      echo "<form method='post' action='#' enctype='multipart/form-data'>";
-      echo " <label>Nombre del Producto:</label>";
-      echo "<select  name='nombreproducto'>";
-      while( $obj = $result->fetch_object()){
-      echo "<option value='$obj->codproducto'>$obj->nombre</option>";
-      }
-       echo "</select><br>";
-       $consulta1="SELECT * FROM colores";
-
-       $result1=$connection->query($consulta1);
-       echo "<form method='post' action='#' enctype='multipart/form-data'>";
-       echo " <label>Nombre del Color:</label>";
-       echo "<select  name='nombrecolor'>";
-       while( $obj1 = $result1->fetch_object()){
-       echo "<option value='$obj1->idcolor'>$obj1->nombrecolor</option>";
-       }
-       echo "</select><br>";
-
-
-       $consulta3="SELECT * FROM tallas";
-
-       $result3=$connection->query($consulta3);
-       echo "<form method='post' action='#' enctype='multipart/form-data'>";
-       echo " <label>Nombre del Color:</label>";
-       echo "<select  name='nombretalla'>";
-       while( $obj3 = $result3->fetch_object()){
-       echo "<option value='$obj3->idtalla'>$obj3->nombretalla</option>";
-       }
-       echo "</select><br>";
-echo "<input type='submit' name='envia' class='btn btn-success' value='Enviar'>";
-     }else{
-       $nombreproducto=$_POST['nombreproducto'];
-       $nombrecolor=$_POST['nombrecolor'];
-       $nombretalla=$_POST['nombretalla'];
-
-
-       $consulta_mysql2="INSERT INTO colorproducto (idrelacion,idcolor,codproducto)
-       VALUES  ( NULL,'$nombrecolor','$nombreproducto')";
-       $consulta_mysql3="INSERT INTO tallasproducto (idrelacion,codproducto,tallas)
-       VALUES  ( NULL,'$nombreproducto','$nombretalla')";
-
-
-               if($connection->query($consulta_mysql2)==true&&$connection->query($consulta_mysql3)==true){
-              header('Location:cyt.php');
-
-                     mysql_close();
-
-
-               }else{
-                   echo $connection->error;
-
-               }
-       }
-               unset($connection);
-
-     ?>
-
-      </div>
+    
       <?php
 
         //CREATING THE CONNECTION

@@ -40,7 +40,9 @@
    var_dump($consulta);
 
       unset($connection);
-        header("Location:cyt.php");
+      $ida=$_POST['producto'];
+
+header("Location:detallecolor.php?deta=$ida");
 
 
 

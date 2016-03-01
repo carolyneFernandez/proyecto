@@ -46,7 +46,7 @@
           </ul>
 
         </li>
-      
+
         <li><a href="sobre.php">SOBRE NOSOTROS</a></li>
         <li>
       <?PHP
@@ -137,16 +137,19 @@
 			}
 		}
 		?>
-		<li><a href="carrito.php"><i class="fa fa-shopping-cart fa-lg"></i> <span class="badge"><?PHP echo $total; ?></span></a></li>
+		<li><a href="carrito.php"><i class="fa fa-shopping-cart fa-lg"></i>
+      <span class="badge"><?PHP echo $total; ?></span></a></li>
 		<?PHP }
 		if(isset($_REQUEST['mensaje']) && $_REQUEST['mensaje'] == '1'){
 		?>
-		<li><label style="margin-top:15px;margin-left:15px;" class="text-danger"><strong>El DNI indicado ya se encuentra en uso en la base de datos</strong></label></li>
+		<li><label style="margin-top:15px;margin-left:15px;" class="text-danger">
+      <strong>El DNI indicado ya se encuentra en uso en la base de datos</strong></label></li>
 		<?PHP
 			}
 		if(isset($_REQUEST['mensaje']) && $_REQUEST['mensaje'] == '2'){
 		?>
-		<li><label style="margin-top:15px;margin-left:15px;" class="text-success"><strong>El usuario ha sido creado correctamente</strong></label></li>
+		<li><label style="margin-top:15px;margin-left:15px;" class="text-success">
+      <strong>El usuario ha sido creado correctamente</strong></label></li>
 		<?PHP
 			}
 		?>
